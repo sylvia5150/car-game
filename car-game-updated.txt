@@ -7,10 +7,10 @@ int xMPos1=0; // blue car
 int yMPos1=0;
 
 int xMPos2=0; // yellow car
-int yMPos2=0;
+int yMPos2=100;
 
 int xMPos3=0; // green car
-int yMPos3=0;
+int yMPos3=200;
 
 int xMPos4=0; // purple car 
 int yMPos4=300;
@@ -44,30 +44,30 @@ void drawCar(){ //user car
   // Make sure car does not go too far away off screen
   if (xPos < 0) {xPos = 0;}
   if (xPos >= width){xPos = width - 50;}
-  
 }
 
 void collision(){
-  int XcenterOfUserCar = xPos + 25;
-  int YcenterOfUserCar = yPos + 25;
-  
-  int XcenterOfBlueCar = xMPos1 + 25;
-  int YcenterOfBlueCar = yMPos1 + 25;
-  
-  int XcenterOfYellowCar = xMPos2 + 25;
-  int YcenterOfYellowCar = yMPos2 + 25;
-  
-  int XcenterOfGreenCar = xMPos3 + 25;
-  int YcenterofGreenCar = yMPos3 + 25;
-  
-  int XcenterOfPurpleCar = xMPos4 + 25;
-  int YcenterOfPurpleCar = yMPos4 + 25;
-  /* collide with blue car */
+  /* collide with purple car */
   // print(xPos, xMPos4, yPos, yMPos4, "\n"); //output for debugging
   if ( (( (xPos >= xMPos4) && (xPos <= xMPos4 + 40)) || ( (xMPos4 >= xPos) && (xMPos4 <= xPos + 40))) && (yMPos4 == yPos)){
-    print("They collided"); // output for debugging
+    print("They collided - purple"); // output for debugging
     GameOver = true;
   }
+  
+   if ( (( (xPos >= xMPos3) && (xPos <= xMPos3 +40)) || ( (xMPos3 >= xPos) && (xMPos3 <= xPos +40))) && (yMPos3 == yPos)){
+    print("They collided - green"); // output for debugging
+    GameOver = true;
+  }
+     if ( (( (xPos >= xMPos2) && (xPos <= xMPos2 +40)) || ( (xMPos2 >= xPos) && (xMPos2 <= xPos +40))) && (yMPos2 == yPos)){
+    print("They collided - yellow"); // output for debugging
+    GameOver = true;
+  }
+  
+     if ( (( (xPos >= xMPos1) && (xPos <= xMPos1 +40)) || ( (xMPos1 >= xPos) && (xMPos1 <= xPos +40))) && (yMPos1 == yPos)){
+    print("They collided - blue"); // output for debugging
+    GameOver = true;
+  }
+  
   if (GameOver){
     background(#121212);
     textSize(40);
@@ -86,17 +86,17 @@ void drawAllMovingCars(){
     xMPos1=0; 
   } 
    fill(#f4f74a);//yellow
-  quad(xMPos2,(yMPos2+100),(xMPos2+50),(yMPos2+100),(xMPos2+50),(yMPos2+150),xMPos2,(yMPos2+150));
-  ellipse((xMPos2+40),(yMPos2+150),20,20);
-  ellipse((xMPos2+10),(yMPos2+150),20,20);
+  quad(xMPos2,(yMPos2),(xMPos2+50),(yMPos2),(xMPos2+50),(yMPos2+50),xMPos2,(yMPos2+50));
+  ellipse((xMPos2+40),(yMPos2+50),20,20);
+  ellipse((xMPos2+10),(yMPos2+50),20,20);
   xMPos2=xMPos2+5;
   if (xMPos2 > width){
     xMPos2=0;
   }
    fill(#2cb320);//green
-  quad(xMPos3,(yMPos3+200),(xMPos3+50),(yMPos3+200),(xMPos3+50),(yMPos3+250),xMPos3,(yMPos3+250));
-  ellipse((xMPos3+40),(yMPos3+250),20,20);
-  ellipse((xMPos3+10),(yMPos3+250),20,20);
+  quad(xMPos3,(yMPos3),(xMPos3+50),(yMPos3),(xMPos3+50),(yMPos3+50),xMPos3,(yMPos3+50));
+  ellipse((xMPos3+40),(yMPos3+50),20,20);
+  ellipse((xMPos3+10),(yMPos3+50),20,20);
   xMPos3=xMPos3+4;
   if (xMPos3 > width){
     xMPos3=0;
@@ -132,9 +132,9 @@ void mouseClicked(){
   xMPos1=0;
   yMPos1=0;
   xMPos2=0;
-  yMPos2=0;
+  yMPos2=100;
   xMPos3=0;
-  yMPos3=0;
+  yMPos3=200;
   xMPos4=0;
   yMPos4=300;
   GameOver = false;
